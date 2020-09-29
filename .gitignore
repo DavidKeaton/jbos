@@ -1,0 +1,9 @@
+# vim
+*~
+*.[Ss]ession
+
+# git
+.git/
+
+# object files
+*.o
