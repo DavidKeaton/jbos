@@ -1,11 +1,20 @@
-.PHONY: clean
-all: boot.bin stage2.bin
+INCLUDE	= "../include/"
+FASM	= "INCLUDE=\"$(INCLUDE)\" fasm"
+
+OUT	= boot.bin stage2.bin
+
+.SILENT: all clean
+.PHONY: all clean
+all: $(OUT)
 
 boot.bin: boot.asm
-	fasm $< $@
+	echo "$(FASM) $< $@"
+	$(FASM) $< $@
 stage2.bin: stage2.asm
-	fasm $< $@
+	echo "$(FASM) $< $@"
+	$(FASM) $< $@
 
 clean:
+	echo "cleaning [src/boot]..."
 	rm -f *~
-	rm -f boot.bin stage2.bin
+	rm -f $(OUT)
