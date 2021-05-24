@@ -1,10 +1,15 @@
+.SILENT: all boot clean
 .PHONY: clean boot
 
 all: boot
 
 boot:
-	make -C boot/
+	echo "compiling [$@/]..."
+	make -s -C $@/
+	mkdir -p ../out/$@/
+	cp $@/*.bin ../out/$@/
 
 clean:
+	echo "cleaning [src/]..."
 	rm -f *~
-	make -C boot/ clean
+	make -s -C boot/ clean
